@@ -22,6 +22,7 @@
     {{ assets.css() }}
 
     {% block javascripts %}
+    {% do assets.addJs('jquery', 100) %}
     <script>
         document.addEventListener('DOMContentLoaded', function () {
 
@@ -49,6 +50,7 @@
         });
     </script>
     {% endblock %}
+    {{ assets.js() }}
 
 {% endblock head%}
 </head>
