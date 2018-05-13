@@ -1,0 +1,356 @@
+/*@import url(https://fonts.googleapis.com/css?family=Lato|Raleway);*/
+@import url(https://fonts.googleapis.com/css?family=Forum|Montserrat);
+
+$bodyfonts: 'Montserrat', sans-serif;
+$headfonts: 'Forum', sans-serif;
+
+@import "sass/utilities/initial-variables";
+@import "sass/utilities/functions";
+
+$family-sans-serif: $bodyfonts;
+$card-footer-background-color: $grey-lighter;
+$card-header-shadow: 0;
+
+$linkcolor: $black;
+$hovercolor: $grey;
+
+@import "bulma";
+
+body {
+	padding: 1em;
+	font-family: $bodyfonts;
+	width: 90%;
+	margin: auto;
+}
+
+p {
+	/*padding-top: 1em;*/
+}
+
+a {
+	color: $linkcolor;
+	text-decoration: underline;
+
+	&:hover {
+		color: $hovercolor;
+	}
+}
+
+/*Headings*/
+h1,h2,h3,h4,h5,h6 {
+	font-family: $headfonts;
+}
+
+h1 {
+	display: block;
+	font-size: 2em;
+	font-weight: bold;
+}
+
+h2 {
+	display: block;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+h3 {
+	display: block;
+	font-size: 1.17em;
+	font-weight: bold;
+}
+
+h4 {
+	display: block;
+	font-weight: bold;
+}
+
+h5 {
+	display: block;
+	font-size: 0.83em;
+	font-weight: bold;
+}
+
+h6 {
+	display: block;
+	font-size: 0.67em;
+	font-weight: bold;
+}
+
+/*Lists*/
+ul {
+	display: block;
+	list-style-type: disc;
+	list-style-position: outside;
+	padding-left: 1em;
+	padding-bottom: 1em;
+
+	ul {
+		list-style-type: circle;	
+
+		ul {
+			list-style-type: square;
+		}
+	}
+}
+
+ol {
+	display: block;
+	list-style-type: decimal;
+	list-style-position: outside;
+	padding-left: 1em;
+	padding-bottom: 1em;
+}
+
+li {
+	display: list-item;
+	padding-left: 1em;
+}
+
+dd {
+	display: block;
+}
+
+dl {
+	display: block;
+}
+
+dt {
+	display: block;
+}
+
+nav {
+	.screen-reader-text {
+		display: none;
+	}
+}
+
+.content {
+	li {
+		/*padding-bottom: 1em;*/
+	}
+}
+
+/*Nav*/
+#social-nav {
+	min-height: 6.01em;
+
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	li {
+		float: left;
+	}
+
+	a {
+		display: block;
+		height: 3em;
+		position: relative;
+		width: 2em;
+		text-decoration: none;
+
+		&:before {
+		    /* >> Symbol you want to use: */
+		    content: "\f16c";
+		    /* >> Name of the FA free font (mandatory)
+		               - 'Font Awesome 5 Free' for Regular and Solid symbols;
+		               - 'Font Awesome 5 Brands' for Brands symbols. */
+		    font-family: "Font Awesome 5 Brands";
+		    /* >> Weight of the font (mandatory)
+		               - 400 for Regular and Brands symbols;
+		               - 900 for Solid symbols. */
+		    font-weight: 400;
+
+		    /* >> Optional styling: */
+			font-size: 24px;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+
+		&[href*="codepen.io"]:before {
+			content: "\f1cb";
+		}
+
+		&[href*="digg.com"]:before {
+			content: "\f1a6";
+		}
+
+		&[href*="dribbble.com"]:before {
+			content: "\f17d";
+		}
+
+		&[href*="dropbox.com"]:before {
+			content: "\f16b";
+		}
+
+		&[href*="facebook.com"]:before {
+			content: "\f09a";
+		}
+
+		&[href*="flickr.com"]:before {
+			content: "\f16e";
+		}
+
+		&[href*="foursquare.com"]:before {
+			content: "\f180";
+		}
+
+		&[href*="plus.google.com"]:before {
+			content: "\f2b3";
+		}
+
+		&[href*="github.com"]:before {
+			content: "\f09b";
+		}
+
+		&[href*="instagram.com"]:before {
+			content: "\f16d";
+		}
+
+		&[href*="linkedin.com"]:before {
+			content: "\f08c";
+		}
+
+		&[href*="pinterest.com"]:before {
+			content: "\f0d2";
+		}
+
+		&[href*="getpocket.com"]:before {
+			content: "\f265";
+		}
+
+		&[href*="reddit.com"]:before {
+			content: "\f1a1";
+		}
+
+		&[href*="stumbleupon.com"]:before {
+			content: "\f1a4";
+		}
+
+		&[href*="tumblr.com"]:before {
+			content: "\f173";
+		}
+
+		&[href*="twitter.com"]:before {
+			content: "\f099";
+		}
+
+		&[href*="vimeo.com"]:before {
+			content: "\f40a";
+		}
+
+		&[href*="wordpress.com"]:before,
+		&[href*="wordpress.org"]:before {
+			content: "\f19a";
+		}
+
+		&[href*="youtube.com"]:before {
+			content: "\f167";
+		}
+
+		&[href*="mailto:"]:before {
+			content: "\f0e0";
+		}
+
+		&[href*="spotify.com"]:before {
+			content: "\f1bc";
+		}
+
+		&[href*="twitch.tv"]:before {
+			content: "\f1e8";
+		}
+
+		&[href$="/feed/"]:before {
+			content: "\f09e";
+		}
+
+		&[href*="skype.com"]:before {
+			content: "\f17e";
+		}
+
+		&[href*="goodreads.com"]:before {
+			content: "\f3a8";
+		}
+
+		&[href*="academia.edu"]:before {
+		    font-family: "Font Awesome 5 Free";
+		    font-weight: 900;
+			content: "\f19d";
+		}
+
+		&[href*="boardgamegeek.com"]:before {
+		    font-family: "Font Awesome 5 Free";
+		    font-weight: 900;
+			content: "\f43c";
+		}
+	}
+}
+
+/*Misc. Elements*/
+.h-card {
+	display: none;
+}
+
+.blogroll {
+	ul {
+		list-style: none;
+		padding-left: 0;
+	}
+
+	li {
+		border-bottom: solid $grey-lighter 1px;
+
+		.description {
+			color: $grey-dark;
+			font-size: smaller;
+		}
+	}
+
+	a {
+		padding-bottom: 0;
+	}
+}
+
+span.posted-on {
+	&:before {
+	    font-family: "Font Awesome 5 Free";
+	    font-weight: 400;
+		content: "\f073";
+	}
+}
+
+span.reading-time {
+	&:before {
+	    font-family: "Font Awesome 5 Free";
+	    font-weight: 400;
+		content: "\f017";
+	}
+}
+
+span.cat-links {
+	&:before {
+	    font-family: "Font Awesome 5 Free";
+	    font-weight: 900;
+		content: "\f07c";
+	}
+}
+
+span.tags-links {
+	&:before {
+	    font-family: "Font Awesome 5 Free";
+	    font-weight: 900;
+		content: "\f02c";
+	}
+}
+
+.card {
+	margin-top: 2em;
+}
+
+#sidebar {
+	section {
+		padding-bottom: 1.5em;
+	}
+}

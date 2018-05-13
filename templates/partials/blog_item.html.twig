@@ -1,0 +1,105 @@
+<article class="card hentry h-entry">
+
+    <div class="card-image">
+    <!-- 
+        <figure class="image is-4by3">
+            <img src="" alt="">
+        </figure>
+    -->
+    </div>
+
+    <header class="card-header entry-header">
+        {% if page.header.link %}
+            <h2 class="card-header-title entry-title p-name">
+                {% if page.header.continue_link is not sameas(false) %}
+                    <a class="u-url u-uid" href="{{ page.url }}"></a>
+                {% endif %}
+                <a class="u-url u-uid" href="{{ page.header.link }}">{{ page.title }}</a>
+            </h2>
+        {% else %}
+            <h2 class="card-header entry-title p-name"><a class="u-url u-uid" href="{{ page.url }}">{{ page.title }}</a></h2>
+        {% endif %}
+    </header>
+
+    <div class="card-content content entry-content e-content">
+        {% block toplinks %}
+        {% endblock %}
+        
+        {% if page.header.continue_link is sameas(false) %}
+            {{ page.content }}
+            {% if not truncate %}
+            {% set show_prev_next = true %}
+            {% endif %}
+        {% elseif truncate and page.summary != page.content %}
+           {{ page.summary }}
+            <a class="more-link" href="{{ page.url }}">{{ 'READ_MORE'|t }}&ensp;<i class="fas fa-arrow-circle-right"></i></a>
+        {% elseif truncate %}
+            {{ page.content|truncate(1000) }}
+            <a class="more-link" href="{{ page.url }}">{{ 'READ_MORE'|t }}&ensp;<i class="fas fa-arrow-circle-right"></i></a>
+        {% else %}
+            {{ page.content }}
+            {% set show_prev_next = true %}
+        {% endif %}
+    </div>
+
+    {% if not truncate %}
+        {% if config.plugins.jscomments.enabled %}
+            {{ jscomments() }}
+        {% endif %}
+    {% endif %}
+
+    <footer class="card-footer entry-footer">
+        {{ config.site.hcard }}
+        <div class="card-footer-item">
+        <span class="posted-on">&ensp;
+            <time class="entry-date published updated dt-published" datetime="{{ page.date|date("c") }}">{{ 'MONTHS_OF_THE_YEAR'|ta(page.date|date('n') - 1) }} {{ page.date|date(config.system.pages.dateformat.default) }}</time> 
+        </span>&emsp;&emsp;
+        <span class="reading-time">&ensp;
+            {{page.content|readingtime}}
+        </span>
+        </div>
+    </footer>
+    <footer class="card-footer entry-footer">
+        <div class="card-footer-item">
+        {% if page.taxonomy.category %}
+            <span class="cat-links">&ensp;
+                {% for cat in page.taxonomy.category %}
+                    <a class="p-category" href="{{ base_url }}/category{{ config.system.param_sep }}{{ cat|url_encode }}">{{ cat }}{% if not loop.last %},{% endif %}</a>
+                {% endfor %}
+            </span>&emsp;&emsp;
+        {% endif %}
+        {% if page.taxonomy.tag %}
+            <span class="tags-links">&ensp;
+                {% for tag in page.taxonomy.tag %}
+                    <a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag|url_encode }}">{{ tag }}{% if not loop.last %},{% endif %}</a>
+                {% endfor %}
+            </span>
+        {% endif %}
+    </footer>
+</article>
+
+{% if show_prev_next %}
+<nav class="navigation post-navigation" role="navigation">
+    <h2 class="screen-reader-text">Post navigation</h2>
+    <div class="nav-links">
+        {% if not page.isLast %}
+            <div class="nav-previous" {% if page.prevSibling.media.images %}style="background-image: url({{ page.prevSibling.media.images|first.cropZoom(1038,437).url }}");{% endif %}>
+                <a href="{{ page.prevSibling.url }}" rel="prev">
+                    <span class="meta-nav" aria-hidden="true" {% if page.prevSibling.media.images %}style="color: #fff;"{% endif %}>{{ 'PREVIOUS'|t }}</span>
+                    <span class="screen-reader-text">{{ 'PREVIOUS'|t }}</span>
+                    <span class="post-title" {% if page.prevSibling.media.images %}style="color: #fff;"{% endif %}>{{ page.prevSibling.header.title }}</span>
+                </a>
+            </div>
+        {% endif %}
+        {% if not page.isFirst %}
+            <div class="nav-next" {% if page.nextSibling.media.images %}style="background-image: url({{ page.nextSibling.media.images|first.cropZoom(1038,437).url }}");{% endif %}>
+                <a href="{{ page.nextSibling.url }}" rel="next">
+                    <span class="meta-nav" aria-hidden="true" {% if page.nextSibling.media.images %}style="color: #fff;"{% endif %}>{{ 'NEXT'|t }}</span>
+                    <span class="screen-reader-text">{{ 'NEXT'|t }}</span>
+                    <span class="post-title" {% if page.nextSibling.media.images %}style="color: #fff;"{% endif %}>{{ page.nextSibling.header.title }}</span>
+                </a>
+            </div>
+        {% endif %}
+    </div>
+</nav>
+{% endif %}

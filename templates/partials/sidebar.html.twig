@@ -1,0 +1,43 @@
+<aside id="sidebar" class="sidebar" >
+        {% if site.social %}
+            <section class="widget">
+            {% include 'partials/social.html.twig' %}
+            </section>
+        {% endif %}
+        {% if config.plugins.relatedpages.enabled and related_pages|length > 0 %}
+            <section class="widget">
+                <h2 class="widget-title">{{ 'RELATED_POSTS'|t }}</h2>
+                {% include 'partials/relatedpages.html.twig' %}
+            </section>
+        {% endif %}
+        {% if config.plugins.random.enabled %}
+            <section class="widget text-style1">
+                <a class="button" href="{{ base_url_relative }}/random">Random Article</a>
+            </section>
+        {% endif %}
+        {% if config.plugins.taxonomylist.enabled %}
+            <section class="widget">
+                <h2 class="widget-title">{{ 'CATEGORIES'|t }}</h2>
+                {% include 'partials/taxonomylist.html.twig' with {taxonomy: 'category'} %}
+            </section>
+        {% endif %}
+        {% if config.plugins.tagcloud.enabled %}
+            <section class="widget">
+                <h2 class="widget-title">{{'POPULAR TAGS'|t}}</h2>
+                {% include 'partials/tagcloud.html.twig' %}
+            </section>
+        {% endif %}
+        {% if config.plugins.blogroll.enabled %}
+            <section class="widget">
+                <h2 class="widget-title">{{ 'SIDE PROJECTS'|t }}</h2>
+                {% include 'partials/blogroll.html.twig' with {'tags': ['projects'], 'orderby': 'sortkey'} %}
+            </section>
+        {% endif %}
+        {% if config.plugins.feed.enabled %}
+            <section class="widget">
+                <h2 class="widget-title">{{ 'SUBSCRIBE'|t }}</h2>
+                <p><a href="{{ feed_url }}.atom"><i class="fas fa-rss-square"></i>&ensp;Atom 1.0</a></p>
+                <p><a href="{{ feed_url }}.rss"><i class="fas fa-rss-square"></i>&ensp;RSS</a></p>
+            </section>
+        {% endif %}
+</aside>

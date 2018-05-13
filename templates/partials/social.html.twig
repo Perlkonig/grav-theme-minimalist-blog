@@ -1,0 +1,11 @@
+<nav id="social-nav">
+  <ul>
+    {% for item in site.social %}
+      <li>
+        <a href="{{ item.url }}" title="{{ item.text }}" rel="me">
+          <span class="screen-reader-text">{{ item.text }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

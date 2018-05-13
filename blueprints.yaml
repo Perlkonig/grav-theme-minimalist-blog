@@ -1,0 +1,27 @@
+name: Minimalist Blog
+version: 0.1.0
+description: Minimalistic blog theme focusing on text
+icon: rebel
+author:
+  name: Aaron Dalton
+  email: aaron@daltons.ca
+homepage: https://github.com/aaron-dalton/grav-theme-minimalist-blog
+demo: http://demo.yoursite.com
+keywords: grav, theme, blog, minimalist, text
+bugs: https://github.com/aaron-dalton/grav-theme-minimalist-blog/issues
+readme: https://github.com/aaron-dalton/grav-theme-minimalist-blog/blob/develop/README.md
+license: MIT
+
+form:
+  validation: loose
+  fields:
+    dropdown.enabled:
+        type: toggle
+        label: Dropdown in Menu
+        highlight: 1
+        default: 1
+        options:
+          1: PLUGIN_ADMIN.ENABLED
+          0: PLUGIN_ADMIN.DISABLED
+        validate:
+          type: bool

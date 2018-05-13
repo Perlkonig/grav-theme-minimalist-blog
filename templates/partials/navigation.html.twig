@@ -1,0 +1,30 @@
+<nav class="navbar" role="navigation" area-label="main navigation">
+    <div class="navbar-brand">
+        <h1 class="navbar-item">{{ config.site.title }}</h1>
+        <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+    </div>
+    <div class="navbar-menu" id="navMenu">
+        <div class="navbar-start">
+        {% for page in pages.children %}
+            {% if page.visible %}
+                {% set current_page = (page.active or page.activeChild) ? 'current' : '' %}
+                <a class="navbar-item {{ current_page }}" href="{{ page.url }}">
+                    {{ page.menu }}
+                </a>
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="navbar-end">
+        {% if config.plugins.simplesearch.enabled %}
+            <div class="nav-bar-item">
+                {% include 'partials/simplesearch_searchbox.html.twig' %}
+            </div>
+        {% endif %}
+        </div>
+    </div>    
+</nav>
+
