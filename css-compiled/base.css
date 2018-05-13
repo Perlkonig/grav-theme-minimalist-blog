@@ -6561,4 +6561,7 @@ span.tags-links:before {
 #sidebar section {
   padding-bottom: 1.5em; }
 
+.pagination li {
+  padding-left: 0; }
+
 /*# sourceMappingURL=base.css.map */
